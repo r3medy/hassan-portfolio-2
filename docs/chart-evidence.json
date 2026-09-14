@@ -1,0 +1,74 @@
+{
+  "retail": {
+    "title": "Recorded sales by category",
+    "measure": "Sum of Total Spent; currency is not specified in the shared file",
+    "source": "Cleaned_retail_store_sales.csv (Kaggle dataset)",
+    "rowCount": 11971,
+    "data": [
+      {
+        "label": "Butchers",
+        "value": 208118.0
+      },
+      {
+        "label": "Electric household essentials",
+        "value": 203813.5
+      },
+      {
+        "label": "Beverages",
+        "value": 197047.5
+      },
+      {
+        "label": "Furniture",
+        "value": 195310.0
+      },
+      {
+        "label": "Food",
+        "value": 194812.0
+      },
+      {
+        "label": "Computers and electric accessories",
+        "value": 190692.5
+      },
+      {
+        "label": "Patisserie",
+        "value": 182165.5
+      },
+      {
+        "label": "Milk Products",
+        "value": 180112.0
+      }
+    ]
+  },
+  "employee": {
+    "title": "Employee records by department",
+    "measure": "Count of rows by Department",
+    "source": "Cleaned_Employee_dataset.csv (Kaggle dataset)",
+    "rowCount": 1020,
+    "data": [
+      {
+        "label": "DevOps",
+        "value": 189
+      },
+      {
+        "label": "Sales",
+        "value": 178
+      },
+      {
+        "label": "HR",
+        "value": 171
+      },
+      {
+        "label": "Finance",
+        "value": 170
+      },
+      {
+        "label": "Admin",
+        "value": 166
+      },
+      {
+        "label": "Cloud Tech",
+        "value": 146
+      }
+    ]
+  }
+}
