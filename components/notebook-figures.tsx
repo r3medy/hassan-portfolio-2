@@ -53,7 +53,7 @@ export function NotebookFigures() {
               src={figure.src}
               width={figure.width}
               height={figure.height}
-              sizes="(max-width: 650px) calc(100vw - 66px), (max-width: 850px) calc(100vw - 104px), 764px"
+              sizes="(max-width: 650px) calc(100vw - 70px), (max-width: 850px) calc(100vw - 108px), (max-width: 1100px) calc(100vw - 410px), (max-width: 1275px) calc(91vw - 400px), 760px"
               alt={figure.alt}
             />
           </div>
