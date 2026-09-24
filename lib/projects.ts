@@ -36,9 +36,9 @@ export const projects: Project[] = [
     output:
       "The shared cleaned CSV contains transaction date and month/year fields, category, quantity, unit price, total spent, payment method, location, and discount fields.",
     toolsNote:
-      "The related notebook has not been reviewed, so project-specific libraries are not listed yet.",
+      "The Colab notebook uses Python, NumPy, Pandas, Seaborn, Matplotlib, and Plotly Express for data preparation, analysis, and visualisation.",
     outcome:
-      "The cleaned records support comparing the recorded Total Spent across categories. The chart below summarizes the shared dataset; detailed business outcomes remain pending.",
+      "The cleaned records support comparing total spend by category and location, item quantities, payment transaction counts, and monthly spend. Spend values use recorded units because the cleaned file does not specify a currency.",
     visualNote:
       "Abstract visual inspired by aligned sales records. It does not depict a measured result.",
   },
@@ -46,8 +46,8 @@ export const projects: Project[] = [
     slug: "smart-cities",
     number: "02",
     title: "Smart Cities",
-    eyebrow: "Cleaning · Analysis",
-    status: "Work in progress",
+    eyebrow: "Cleaning · Analysis · Visuals",
+    status: "Completed",
     summary:
       "Preparing and exploring a multi-table city dataset for the DEPI initiative.",
     question:
@@ -55,17 +55,18 @@ export const projects: Project[] = [
     source: "Digital Egypt Pioneers Initiative (DEPI) internship task.",
     goal: "Clean and analyze eight related tables, spanning about 528,000 rows and 90 columns.",
     process: [
-      "Work across eight tables to prepare the source data for analysis.",
-      "Explore the prepared data. Visuals and final findings remain in progress.",
+      "Clean and prepare eight related tables for analysis.",
+      "Explore traffic, emergency, air quality, and weather fields with descriptive summaries.",
+      "Create notebook charts for selected patterns with Matplotlib and Seaborn.",
     ],
     output:
-      "The task spans eight related tables and about 528,000 rows across 90 columns, as described by Hassan.",
+      "The completed notebook covers eight related tables and about 528,000 rows across 90 columns, as described by Hassan, with selected chart outputs from the analysis.",
     toolsNote:
-      "Project-specific tools will be listed when the supporting files are available for review.",
+      "The notebook uses Python, Pandas, and NumPy for data preparation and analysis, with Matplotlib and Seaborn for visualisation.",
     outcome:
-      "This case study remains open while its visuals and findings are completed.",
+      "The completed analysis includes descriptive views of traffic by hour and emergency type, average air quality by congestion level, and weather event frequency. These views summarize the supplied tables without claiming causal effects.",
     visualNote:
-      "Abstract network of city systems. It does not represent measured city data.",
+      "These figures are saved outputs from the project notebook. They show selected descriptive views, not every table or analysis result.",
   },
   {
     slug: "messy-employee-dataset",

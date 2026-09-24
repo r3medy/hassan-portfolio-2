@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import chartEvidence from "@/docs/chart-evidence.json";
 import { DatasetChart } from "@/components/dataset-chart";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "@/components/icons";
+import { NotebookFigures } from "@/components/notebook-figures";
 import { ProjectArtwork } from "@/components/project-artwork";
+import { RetailCharts } from "@/components/retail-charts";
 import { getProject, projects } from "@/lib/projects";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -33,12 +35,10 @@ export default async function ProjectPage({ params }: Props) {
   if (!project) notFound();
   const index = projects.findIndex((item) => item.slug === slug);
   const nextProject = projects[(index + 1) % projects.length];
-  const chart =
-    slug === "retail-store-sales"
-      ? chartEvidence.retail
-      : slug === "messy-employee-dataset"
-        ? chartEvidence.employee
-        : null;
+  const retailChart =
+    slug === "retail-store-sales" ? chartEvidence.retail : null;
+  const employeeChart =
+    slug === "messy-employee-dataset" ? chartEvidence.employee : null;
 
   return (
     <main id="main" className="case-page">
@@ -108,27 +108,36 @@ export default async function ProjectPage({ params }: Props) {
           <section>
             <span className="case-section-number">03 / WHAT IS READY</span>
             <h2>
-              {project.status
-                ? "Still in progress"
+              {slug === "smart-cities"
+                ? "What the analysis shows"
+                : project.status
+                  ? "Still in progress"
                 : slug === "netflix-titles" || slug === "crime-incidents"
                   ? "A cleaner starting point"
                   : "What the project shows"}
             </h2>
             <p>{project.outcome}</p>
-            {chart ? (
-              <DatasetChart
-                title={chart.title}
-                measure={chart.measure}
-                items={chart.data}
-                valueLabel={
-                  slug === "retail-store-sales"
-                    ? "Total Spent, units as recorded"
-                    : "Records"
-                }
-                rowCount={chart.rowCount}
+            {retailChart ? (
+              <RetailCharts
+                categorySpend={retailChart.categorySpend}
+                topItemsByQuantity={retailChart.topItemsByQuantity}
+                locationSpend={retailChart.locationSpend}
+                paymentTransactions={retailChart.paymentTransactions}
+                monthlySpend={retailChart.monthlySpend}
+                rowCount={retailChart.rowCount}
               />
             ) : null}
-            {!chart ? (
+            {employeeChart ? (
+              <DatasetChart
+                title={employeeChart.title}
+                measure={employeeChart.measure}
+                items={employeeChart.data}
+                valueLabel="Records"
+                rowCount={employeeChart.rowCount}
+              />
+            ) : null}
+            {slug === "smart-cities" ? <NotebookFigures /> : null}
+            {!retailChart && !employeeChart ? (
               <div className="case-visual-note">
                 <span className="eyebrow">Visual note</span>
                 <p>{project.visualNote}</p>

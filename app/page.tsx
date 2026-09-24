@@ -272,8 +272,9 @@ export default function HomePage() {
               </p>
               <p>
                 Cleaning and analysis across eight related tables, covering
-                about 528,000 rows and 90 columns. Visuals and final findings
-                are still in progress.
+                about 528,000 rows and 90 columns. The completed notebook
+                includes selected views of traffic, air quality, and weather
+                events.
               </p>
               <Link className="inline-link" href="/projects/smart-cities">
                 View the case study <ArrowUpRight size={16} />
