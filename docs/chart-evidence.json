@@ -4,39 +4,85 @@
     "measure": "Sum of Total Spent; currency is not specified in the shared file",
     "source": "Cleaned_retail_store_sales.csv (Kaggle dataset)",
     "rowCount": 11971,
-    "data": [
-      {
-        "label": "Butchers",
-        "value": 208118.0
-      },
-      {
-        "label": "Electric household essentials",
-        "value": 203813.5
-      },
-      {
-        "label": "Beverages",
-        "value": 197047.5
-      },
-      {
-        "label": "Furniture",
-        "value": 195310.0
-      },
-      {
-        "label": "Food",
-        "value": 194812.0
-      },
-      {
-        "label": "Computers and electric accessories",
-        "value": 190692.5
-      },
-      {
-        "label": "Patisserie",
-        "value": 182165.5
-      },
-      {
-        "label": "Milk Products",
-        "value": 180112.0
-      }
+    "categorySpend": [
+      { "label": "Butchers", "value": 208118.0 },
+      { "label": "Electric household essentials", "value": 203813.5 },
+      { "label": "Beverages", "value": 197047.5 },
+      { "label": "Furniture", "value": 195310.0 },
+      { "label": "Food", "value": 194812.0 },
+      { "label": "Computers and electric accessories", "value": 190692.5 },
+      { "label": "Patisserie", "value": 182165.5 },
+      { "label": "Milk Products", "value": 180112.0 }
+    ],
+    "topItemsByQuantity": [
+      { "label": "Beverages / Item_2_BEV", "value": 676 },
+      { "label": "Milk Products / Item_16_MILK", "value": 627 },
+      { "label": "Furniture / Item_25_FUR", "value": 616 },
+      { "label": "Milk Products / Item_19_MILK", "value": 589 },
+      { "label": "Food / Item_13_FOOD", "value": 581 },
+      { "label": "Furniture / Item_5_FUR", "value": 581 },
+      { "label": "Milk Products / Item_1_MILK", "value": 578 },
+      { "label": "Milk Products / Item_11_MILK", "value": 574 },
+      { "label": "Furniture / Item_11_FUR", "value": 573 },
+      { "label": "Food / Item_14_FOOD", "value": 566 },
+      { "label": "Computers and electric accessories / Item_12_CEA", "value": 565 },
+      { "label": "Butchers / Item_20_BUT", "value": 563 },
+      { "label": "Electric household essentials / Item_25_EHE", "value": 563 },
+      { "label": "Computers and electric accessories / Item_19_CEA", "value": 558 },
+      { "label": "Computers and electric accessories / Item_5_CEA", "value": 558 },
+      { "label": "Beverages / Item_14_BEV", "value": 552 },
+      { "label": "Food / Item_12_FOOD", "value": 551 },
+      { "label": "Furniture / Item_2_FUR", "value": 550 },
+      { "label": "Electric household essentials / Item_15_EHE", "value": 549 },
+      { "label": "Milk Products / Item_13_MILK", "value": 547 }
+    ],
+    "locationSpend": [
+      { "label": "In-store", "value": 760670.0 },
+      { "label": "Online", "value": 791401.0 }
+    ],
+    "paymentTransactions": [
+      { "label": "Cash", "value": 4103 },
+      { "label": "Credit Card", "value": 3927 },
+      { "label": "Digital Wallet", "value": 3941 }
+    ],
+    "monthlySpend": [
+      { "label": "2022 Jan", "value": 52911.5 },
+      { "label": "2022 Feb", "value": 43325.5 },
+      { "label": "2022 Mar", "value": 40996.0 },
+      { "label": "2022 Apr", "value": 40442.0 },
+      { "label": "2022 May", "value": 40347.5 },
+      { "label": "2022 Jun", "value": 42576.0 },
+      { "label": "2022 Jul", "value": 44471.5 },
+      { "label": "2022 Aug", "value": 41333.5 },
+      { "label": "2022 Sep", "value": 46113.5 },
+      { "label": "2022 Oct", "value": 38355.0 },
+      { "label": "2022 Nov", "value": 41256.5 },
+      { "label": "2022 Dec", "value": 38201.0 },
+      { "label": "2023 Jan", "value": 48052.5 },
+      { "label": "2023 Feb", "value": 39214.5 },
+      { "label": "2023 Mar", "value": 38534.5 },
+      { "label": "2023 Apr", "value": 38905.5 },
+      { "label": "2023 May", "value": 40480.5 },
+      { "label": "2023 Jun", "value": 42474.0 },
+      { "label": "2023 Jul", "value": 45632.5 },
+      { "label": "2023 Aug", "value": 38592.0 },
+      { "label": "2023 Sep", "value": 41069.0 },
+      { "label": "2023 Oct", "value": 38322.0 },
+      { "label": "2023 Nov", "value": 37014.0 },
+      { "label": "2023 Dec", "value": 43021.0 },
+      { "label": "2024 Jan", "value": 47908.5 },
+      { "label": "2024 Feb", "value": 37145.0 },
+      { "label": "2024 Mar", "value": 42861.5 },
+      { "label": "2024 Apr", "value": 46271.0 },
+      { "label": "2024 May", "value": 43766.5 },
+      { "label": "2024 Jun", "value": 44721.0 },
+      { "label": "2024 Jul", "value": 41405.0 },
+      { "label": "2024 Aug", "value": 43362.0 },
+      { "label": "2024 Sep", "value": 42161.5 },
+      { "label": "2024 Oct", "value": 42736.5 },
+      { "label": "2024 Nov", "value": 44076.0 },
+      { "label": "2024 Dec", "value": 48466.5 },
+      { "label": "2025 Jan", "value": 25548.5 }
     ]
   },
   "employee": {
@@ -45,30 +91,12 @@
     "source": "Cleaned_Employee_dataset.csv (Kaggle dataset)",
     "rowCount": 1020,
     "data": [
-      {
-        "label": "DevOps",
-        "value": 189
-      },
-      {
-        "label": "Sales",
-        "value": 178
-      },
-      {
-        "label": "HR",
-        "value": 171
-      },
-      {
-        "label": "Finance",
-        "value": 170
-      },
-      {
-        "label": "Admin",
-        "value": 166
-      },
-      {
-        "label": "Cloud Tech",
-        "value": 146
-      }
+      { "label": "DevOps", "value": 189 },
+      { "label": "Sales", "value": 178 },
+      { "label": "HR", "value": 171 },
+      { "label": "Finance", "value": 170 },
+      { "label": "Admin", "value": 166 },
+      { "label": "Cloud Tech", "value": 146 }
     ]
   }
 }

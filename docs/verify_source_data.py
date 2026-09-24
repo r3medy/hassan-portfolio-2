@@ -1,4 +1,6 @@
 """Reproduce public chart aggregates from locally retained source CSVs."""
+
+import calendar
 import csv
 import hashlib
 import json
@@ -6,27 +8,151 @@ from collections import Counter, defaultdict
 from decimal import Decimal
 from pathlib import Path
 
-root = Path(__file__).resolve().parents[1]
-source = root / '.source-data'
-evidence = json.loads((root / 'docs/chart-evidence.json').read_text())
 
-for project, filename, category, measure in (
-    ('retail', 'retail.csv', 'Category', 'Total Spent'),
-    ('employee', 'employee.csv', 'Department', None),
-):
-    path = source / filename
-    with path.open(encoding='utf-8-sig', newline='') as file:
-        rows = list(csv.DictReader(file))
-    assert len(rows) == evidence[project]['rowCount']
-    expected = {item['label']: Decimal(str(item['value'])) for item in evidence[project]['data']}
-    if measure:
-        actual = defaultdict(Decimal)
-        for row in rows:
-            assert row[category] and row[measure]
-            actual[row[category]] += Decimal(row[measure])
-        assert sum(actual.values()) == sum(Decimal(row[measure]) for row in rows)
-    else:
-        actual = Counter(row[category] for row in rows)
-        assert sum(actual.values()) == len(rows)
-    assert actual == expected
-    print(f'{project}: aggregate values verified; SHA256 {hashlib.sha256(path.read_bytes()).hexdigest()}')
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE = ROOT / ".source-data"
+EVIDENCE = json.loads((ROOT / "docs/chart-evidence.json").read_text())
+MONTH_NUMBER = {
+    month: number for number, month in enumerate(calendar.month_name) if month
+}
+
+
+def load_rows(filename):
+    path = SOURCE / filename
+    with path.open(encoding="utf-8-sig", newline="") as file:
+        return path, list(csv.DictReader(file))
+
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def evidence_items(group):
+    items = [
+        (item["label"], Decimal(str(item["value"])))
+        for item in EVIDENCE["retail"][group]
+    ]
+    require(
+        len(items) == len(dict(items)),
+        f"Duplicate labels in {group} evidence",
+    )
+    return items
+
+
+def verify_group(group, actual_items):
+    expected_items = evidence_items(group)
+    actual = dict(actual_items)
+    expected = dict(expected_items)
+    require(actual.keys() == expected.keys(), f"Label mismatch for {group}")
+    require(actual == expected, f"Value mismatch for {group}")
+    require(list(actual) == list(expected), f"Order mismatch for {group}")
+
+
+def verify_retail():
+    path, rows = load_rows("retail.csv")
+    require(
+        len(rows) == EVIDENCE["retail"]["rowCount"],
+        "Retail row count mismatch",
+    )
+
+    category_spend = defaultdict(Decimal)
+    item_quantity = defaultdict(Decimal)
+    location_spend = defaultdict(Decimal)
+    payment_transactions = defaultdict(Decimal)
+    monthly_spend = defaultdict(Decimal)
+
+    for row_number, row in enumerate(rows, start=2):
+        required = (
+            "Category",
+            "Item",
+            "Quantity",
+            "Total Spent",
+            "Location",
+            "Payment Method",
+            "Transaction Month",
+            "Transaction Year",
+        )
+        require(
+            all(row[field] for field in required),
+            f"Retail row {row_number} has a missing grouping value",
+        )
+
+        spend = Decimal(row["Total Spent"])
+        category_spend[row["Category"]] += spend
+        item_quantity[(row["Category"], row["Item"])] += Decimal(row["Quantity"])
+        location_spend[row["Location"]] += spend
+        if row["Transaction ID"]:
+            payment_transactions[row["Payment Method"]] += Decimal(1)
+        month_key = (
+            int(row["Transaction Year"]),
+            MONTH_NUMBER[row["Transaction Month"]],
+        )
+        monthly_spend[month_key] += spend
+
+    verify_group(
+        "categorySpend",
+        sorted(category_spend.items(), key=lambda item: (-item[1], item[0])),
+    )
+
+    top_items = sorted(
+        item_quantity.items(),
+        key=lambda item: (-item[1], item[0]),
+    )[:20]
+    verify_group(
+        "topItemsByQuantity",
+        [
+            (f"{category} / {item}", quantity)
+            for (category, item), quantity in top_items
+        ],
+    )
+
+    verify_group("locationSpend", sorted(location_spend.items()))
+    verify_group("paymentTransactions", sorted(payment_transactions.items()))
+    verify_group(
+        "monthlySpend",
+        [
+            (f"{year} {calendar.month_abbr[month]}", spend)
+            for (year, month), spend in sorted(monthly_spend.items())
+        ],
+    )
+
+    require(
+        sum(category_spend.values())
+        == sum(Decimal(row["Total Spent"]) for row in rows),
+        "Retail category totals do not cover all recorded spend",
+    )
+    require(
+        sum(payment_transactions.values())
+        == sum(bool(row["Transaction ID"]) for row in rows),
+        "Retail payment totals do not cover all transaction IDs",
+    )
+    print(
+        "Retail aggregates verified; "
+        f"SHA256 {hashlib.sha256(path.read_bytes()).hexdigest()}"
+    )
+
+
+def verify_employee():
+    path, rows = load_rows("employee.csv")
+    require(
+        len(rows) == EVIDENCE["employee"]["rowCount"],
+        "Employee row count mismatch",
+    )
+    actual = Counter(row["Department"] for row in rows)
+    expected = {
+        item["label"]: Decimal(str(item["value"]))
+        for item in EVIDENCE["employee"]["data"]
+    }
+    require(all(actual), "Employee data contains a blank department")
+    require(actual.keys() == expected.keys(), "Employee department labels mismatch")
+    require(actual == expected, "Employee department totals mismatch")
+    require(sum(actual.values()) == len(rows), "Employee totals do not cover all rows")
+    print(
+        "Employee aggregates verified; "
+        f"SHA256 {hashlib.sha256(path.read_bytes()).hexdigest()}"
+    )
+
+
+verify_retail()
+verify_employee()
