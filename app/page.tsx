@@ -5,33 +5,6 @@ import { NetworkArt } from "@/components/network-art";
 import { ProjectArtwork } from "@/components/project-artwork";
 import { projects } from "@/lib/projects";
 
-const services = [
-  {
-    number: "01",
-    title: "Data cleaning + simple analysis",
-    description:
-      "Fix data quality issues and get a basic summary of the cleaned data.",
-    detail:
-      "A useful first step when your records need attention before your team can rely on them.",
-  },
-  {
-    number: "02",
-    title: "Data cleaning + analysis",
-    description:
-      "Clean the data, explore patterns, and get relevant visuals with clear findings.",
-    detail:
-      "For teams that need to understand what the data says and what to look at next.",
-  },
-  {
-    number: "03",
-    title: "Data cleaning + analysis + dashboard",
-    description:
-      "Complete the analysis and bring key measures into a Power BI dashboard.",
-    detail:
-      "For teams that need a clear view they can return to. Dashboard sample in progress.",
-  },
-];
-
 export default function HomePage() {
   return (
     <main id="main">
@@ -101,15 +74,19 @@ export default function HomePage() {
                 <span>Based in Cairo, Egypt</span>
                 <span>Working remotely worldwide</span>
               </div>
-              <div className="resume-status">
+              <a
+                className="resume-status"
+                href="/Hassan_Ahmed_CV.pdf"
+                download
+              >
                 <span className="resume-icon" aria-hidden="true">
                   ↗
                 </span>
                 <div>
-                  <strong>Résumé PDF is being prepared</strong>
-                  <span>A download will appear here when it is ready.</span>
+                  <strong>Download my résumé</strong>
+                  <span>View or save my CV as a PDF.</span>
                 </div>
-              </div>
+              </a>
             </div>
             <div
               className="portrait-frame"
@@ -142,38 +119,39 @@ export default function HomePage() {
           </div>
           <div className="section-intro">
             <div>
-              <p className="eyebrow">What I can help with</p>
+              <p className="eyebrow">Available services</p>
               <h2 id="services-heading">
-                From messy records
+                Find me on freelance
                 <br />
-                to <span className="accent-text">clear direction.</span>
+                <span className="accent-text">platforms.</span>
               </h2>
             </div>
             <p>
-              Every dataset and business question is different. Choose the
-              support that fits your project, and I&apos;ll put together a
-              custom quote.
+              Browse my current service on Khamsat. More services are coming
+              soon.
             </p>
           </div>
           <div className="services-list">
-            {services.map((service) => (
-              <article className="service-row" key={service.number}>
-                <span className="service-number">{service.number}</span>
-                <div className="service-main">
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                  <span className="service-detail">{service.detail}</span>
-                </div>
-                <Link
-                  className="service-cta"
-                  href={`/?service=${encodeURIComponent(service.title)}#contact`}
-                  aria-label={`Get a custom quote for ${service.title}`}
-                >
-                  <span>Get a custom quote</span>
-                  <ArrowUpRight size={18} />
-                </Link>
-              </article>
-            ))}
+            <article className="service-row">
+              <span className="service-number">01</span>
+              <div className="service-main">
+                <h3>Data analysis using Python</h3>
+                <p>Available now on Khamsat.</p>
+                <span className="service-detail">
+                  More services coming soon.
+                </span>
+              </div>
+              <a
+                className="service-cta"
+                href="https://khamsat.com/data/data-analytics/4463794-%D8%AA%D8%AD%D9%84%D9%8A%D9%84-%D8%A7%D9%84%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA-%D8%A8-%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-%D9%84%D8%BA%D8%A9-%D8%A8%D8%A7%D9%8A%D8%AB%D9%88%D9%86"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View Hassan's Python data analysis service on Khamsat (opens in a new tab)"
+              >
+                <span>View service</span>
+                <ArrowUpRight size={18} />
+              </a>
+            </article>
           </div>
           <div className="tools-context">
             <span className="eyebrow">Tools I work with</span>
@@ -347,6 +325,27 @@ export default function HomePage() {
                   rel="noopener noreferrer"
                 >
                   Connect on LinkedIn <ArrowUpRight size={17} />
+                </a>
+                <a
+                  href="https://mostaql.com/u/HasSan7_Ahmed"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Mostaql profile <ArrowUpRight size={17} />
+                </a>
+                <a
+                  href="https://khamsat.com/user/hassan7_ahmed"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Khamsat profile <ArrowUpRight size={17} />
+                </a>
+                <a
+                  href="https://nafezly.com/u/hassan0ahmed"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Nafezly profile <ArrowUpRight size={17} />
                 </a>
               </div>
             </div>

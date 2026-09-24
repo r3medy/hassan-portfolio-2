@@ -26,13 +26,7 @@ Use a voice that is professional, friendly, direct, and technically credible. Ex
 
 ## Services
 
-Present three separate service options. Each option invites a custom quote. Do not show fixed prices.
-
-1. **Data cleaning + simple analysis:** Fix data quality issues and provide a basic summary of the cleaned data.
-2. **Data cleaning + analysis:** Clean data, explore patterns, create relevant visuals, and explain useful findings.
-3. **Data cleaning + analysis + dashboard:** Complete the analysis and present key measures in a Power BI dashboard.
-
-The third option can appear as an available service. A Power BI dashboard sample is still in progress. Do not imply that a finished sample exists.
+Show services that Hassan lists on freelance platforms. The current listing is **Data analysis using Python** on [Khamsat](https://khamsat.com/data/data-analytics/4463794-%D8%AA%D8%AD%D9%84%D9%8A%D9%84-%D8%A7%D9%84%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA-%D8%A8-%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-%D9%84%D8%BA%D8%A9-%D8%A8%D8%A7%D9%8A%D8%AB%D9%88%D9%86). Link to the listing and state that more services are coming soon. Do not invent additional listings or prices.
 
 Do not advertise predictive modeling, ML preparation, or other AI services at launch. These can be added later.
 
@@ -46,7 +40,7 @@ The home page contains these sections, in order:
 
 1. Hero with a clear service promise and a main contact button.
 2. About with a portrait placeholder.
-3. Services with the three options above.
+3. Services with listed freelance-platform services and a link to each listing.
 4. Projects with six selected case studies.
 5. Experience with the DEPI project.
 6. Education.
@@ -108,13 +102,17 @@ Also show:
 - A WhatsApp chat button for **+20 1224926110**. Do not print the number beside the button.
 - [Hassan's LinkedIn profile](https://www.linkedin.com/in/hassannahmed/).
 
-Use a custom-quote call to action for each service. No fixed pricing appears on the site.
+Show Hassan's freelance profiles alongside WhatsApp and LinkedIn:
+
+- [Mostaql](https://mostaql.com/u/HasSan7_Ahmed)
+- [Khamsat](https://khamsat.com/user/hassan7_ahmed)
+- [Nafezly](https://nafezly.com/u/hassan0ahmed)
 
 ## Résumé and placeholders
 
-Hassan wants a résumé download once the PDF is ready. Use a clear placeholder at launch. Do not present a broken download link.
+The supplied résumé PDF is available from the About section. Keep the portrait placeholder clear and do not present a broken image.
 
-The following content remains pending: the portrait, résumé PDF, completed Smart Cities visuals, final Power BI sample, and detailed project outcomes. The site can launch with the approved placeholders and accurate project descriptions.
+The following content remains pending: the portrait, completed Smart Cities visuals, final Power BI sample, and detailed project outcomes. The site can launch with the approved placeholders and accurate project descriptions.
 
 ## Technical direction
 
@@ -127,12 +125,12 @@ Give each page a clear title and description. Make case study links shareable. K
 ## Launch acceptance criteria
 
 - The home page explains Hassan's offer and leads visitors to Contact.
-- All three services appear as separate custom-quote options.
+- The Services section links to the current Khamsat listing and says more services are coming soon.
 - Six project cards lead to six readable case study pages.
 - Retail and Smart Cities appear first. Smart Cities shows its work-in-progress status.
 - Project text distinguishes completed cleaning from completed analysis. It does not invent outcomes.
 - The contact form validates its required fields and opens a prefilled email in the visitor's email application.
-- WhatsApp and LinkedIn links lead to the correct destinations.
-- The résumé and portrait placeholders are clear and do not look broken.
+- WhatsApp, LinkedIn, Mostaql, Khamsat, and Nafezly links lead to the supplied destinations.
+- The supplied résumé PDF has a working download link, and the portrait placeholder is clear.
 - The site works on mobile, supports keyboard use, and reduces motion when requested.
 - The production build succeeds and can deploy to Vercel.

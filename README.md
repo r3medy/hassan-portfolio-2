@@ -38,7 +38,9 @@ npm run start
 
 The contact form opens an email draft addressed to Hassan. The visitor must send the draft from their email application. No email service, API key, database, or environment variable is required. A copy-email action provides a fallback.
 
-The portrait and resume remain clear placeholders. Smart Cities visuals and findings remain in progress. The Power BI sample is pending. Netflix and Crime Incidents present cleaning work only.
+The portrait remains a clear placeholder. Smart Cities visuals and findings remain in progress. The Power BI sample is pending. Netflix and Crime Incidents present cleaning work only. The résumé PDF is available from the About section.
+
+The Services section links to the current Python data analysis listing on Khamsat. The Contact section links to Hassan's WhatsApp, LinkedIn, Mostaql, Khamsat, and Nafezly profiles.
 
 The site never publishes source CSVs or notebooks. `.source-data/` contains local verification copies and is excluded from Git. With those copies present, reproduce chart checks using `python docs/verify_source_data.py`.
 
@@ -50,4 +52,4 @@ This workspace does not include a public deployment. See the [Next.js deployment
 
 ## Later content updates
 
-Replace the portrait placeholder when a photo is ready. Add a resume download only after adding the actual PDF. Update project status, methods, and findings when supporting work is available. Preserve the source distinction between dataset summaries and verified client outcomes.
+Replace the portrait placeholder when a photo is ready. Update project status, methods, and findings when supporting work is available. Preserve the source distinction between dataset summaries and verified client outcomes.

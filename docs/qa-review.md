@@ -7,12 +7,12 @@ Use this checklist after the implementation is complete. The PRD is the content 
 - [ ] Home page sections appear in this order: Hero, About, Services, Projects, Experience, Education, Contact.
 - [ ] Hero states the data-cleaning and analysis offer, links to Contact, and may link to Projects.
 - [ ] About identifies Hassan as a student and freelance data analyst. The portrait states that a photo is pending.
-- [ ] Services show the three approved scopes, each with a custom-quote action and no fixed price.
-- [ ] Each custom-quote link updates the selected service after client-side navigation and adds it to the email draft.
+- [ ] Services show the current Python data analysis listing on Khamsat and state that more services are coming soon.
+- [ ] The service link opens the supplied Khamsat listing in a new tab.
 - [ ] No launch copy advertises ML, AI, predictive modeling, testimonials, a blog, project filters, or GitHub.
 - [ ] Experience names the DEPI Smart Cities task without an exact date or unverified outcome.
 - [ ] Education states Software Engineering, Helwan University, with expected graduation in 2028.
-- [ ] Résumé content has an honest placeholder and no broken download URL.
+- [ ] Résumé download links to the supplied PDF.
 
 ## Projects and evidence
 
@@ -37,6 +37,7 @@ Use this checklist after the implementation is complete. The PRD is the content 
 - [ ] Clipboard failures show an error or recovery state; success feedback is announced without relying only on color.
 - [ ] WhatsApp opens a chat for `+20 1224926110` without printing the number beside its button.
 - [ ] LinkedIn targets `https://www.linkedin.com/in/hassannahmed/`.
+- [ ] Mostaql, Khamsat, and Nafezly profile links target the supplied URLs and open in new tabs.
 
 ## Accessibility, responsive behavior, and performance
 
@@ -60,10 +61,10 @@ Use this checklist after the implementation is complete. The PRD is the content 
 - Source review passed for PRD content, metadata, static routes, contact validation, mailto encoding, accessibility semantics, mobile navigation, and reduced-motion rules.
 - `python docs/verify_source_data.py` reproduced the published Retail and Employee chart aggregates from the retained source data.
 - The implementation owner reported passing `npm run typecheck`, `npm run lint`, and `npm run build`.
-- Browser review covered the home page, all six case studies, 320 px and 390 px layouts, mobile menu keyboard behavior, form validation and focus, service prefill, mailto fallback wording, and clipboard copy feedback.
+- Browser review covered the home page, all six case studies, 320 px and 390 px layouts, mobile menu keyboard behavior, form validation and focus, mailto fallback wording, and clipboard copy feedback.
 
 ## Known launch limitations
 
 - The site has no automated interaction test suite. Repeat the manual browser checks above after contact, navigation, or route changes.
 - Scroll entrance effects use CSS view timelines when the browser supports them. Other browsers show the same content without the effect.
-- The portrait, résumé PDF, completed Smart Cities visuals, Power BI sample, and detailed project outcomes remain approved placeholders or work in progress.
+- The portrait, completed Smart Cities visuals, Power BI sample, and detailed project outcomes remain approved placeholders or work in progress. The résumé PDF is supplied.
