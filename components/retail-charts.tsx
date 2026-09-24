@@ -277,7 +277,7 @@ export function RetailCharts({
                 <Tooltip
                   formatter={(value, name) => [
                     numberFormatter.format(Number(value)),
-                    String(name),
+                    `${String(name)} recorded spend units`,
                   ]}
                   contentStyle={{
                     background: "#101514",
