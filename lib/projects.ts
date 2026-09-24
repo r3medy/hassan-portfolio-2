@@ -49,15 +49,15 @@ export const projects: Project[] = [
     eyebrow: "Cleaning · Analysis · Visuals",
     status: "Completed",
     summary:
-      "Preparing and exploring a multi-table city dataset for the DEPI initiative.",
+      "Cleaned and explored a multi-table city dataset for the DEPI initiative.",
     question:
       "How can data spread across several city-related tables become useful for analysis?",
     source: "Digital Egypt Pioneers Initiative (DEPI) internship task.",
     goal: "Clean and analyze eight related tables, spanning about 528,000 rows and 90 columns.",
     process: [
-      "Clean and prepare eight related tables for analysis.",
-      "Explore traffic, emergency, air quality, and weather fields with descriptive summaries.",
-      "Create notebook charts for selected patterns with Matplotlib and Seaborn.",
+      "Cleaned and prepared eight related tables for analysis.",
+      "Explored traffic, emergency, air quality, and weather fields with descriptive summaries.",
+      "Created notebook charts for selected patterns with Matplotlib and Seaborn.",
     ],
     output:
       "The completed notebook covers eight related tables and about 528,000 rows across 90 columns, as described by Hassan, with selected chart outputs from the analysis.",
