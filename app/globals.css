@@ -1920,3 +1920,110 @@ p {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Case study charts and notebook figures */
+.retail-charts,
+.notebook-figures {
+  display: grid;
+  gap: 18px;
+  margin-top: 50px;
+}
+.retail-charts {
+  grid-template-columns: minmax(0, 1fr);
+}
+.notebook-figures {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.retail-chart,
+.notebook-figure {
+  min-width: 0;
+  margin: 0;
+  padding: 28px;
+  background: #17231d;
+  border: 1px solid rgba(154, 231, 195, 0.16);
+}
+.retail-chart-wide,
+.notebook-figure {
+  grid-column: 1 / -1;
+}
+.retail-chart-heading,
+.notebook-figure-heading {
+  margin-bottom: 22px;
+}
+.retail-chart-heading h3,
+.notebook-figure-heading h3 {
+  margin: 9px 0 0;
+  font-size: clamp(22px, 2.4vw, 30px);
+}
+.retail-chart-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-color: rgba(154, 231, 195, 0.48) rgba(154, 231, 195, 0.06);
+  scrollbar-width: thin;
+}
+.retail-chart-scroll:focus-visible {
+  outline-offset: -2px;
+}
+.retail-chart-plot {
+  width: 100%;
+  min-width: 650px;
+  height: 360px;
+}
+.retail-chart-plot-tall {
+  min-width: 700px;
+  height: 720px;
+}
+.retail-chart-plot-line {
+  min-width: 720px;
+  height: 410px;
+}
+.retail-chart figcaption,
+.notebook-figure figcaption {
+  padding-top: 15px;
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.notebook-figure-media {
+  overflow: hidden;
+  background: #f7f7f7;
+  border: 1px solid rgba(154, 231, 195, 0.12);
+}
+.notebook-figure-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 850px) {
+  .retail-charts,
+  .notebook-figures {
+    grid-template-columns: 1fr;
+  }
+  .retail-chart,
+  .notebook-figure {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 650px) {
+  .retail-charts,
+  .notebook-figures {
+    gap: 14px;
+    margin-top: 35px;
+  }
+  .retail-chart,
+  .notebook-figure {
+    padding: 20px 15px;
+  }
+  .retail-chart-heading,
+  .notebook-figure-heading {
+    margin-bottom: 16px;
+  }
+  .retail-chart-heading h3,
+  .notebook-figure-heading h3 {
+    font-size: 23px;
+  }
+}
