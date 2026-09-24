@@ -49,6 +49,8 @@ const axisTick = {
 
 const lineColors = ["#9ae7c3", "#e0b96d", "#8ba6ff", "#dc88af"];
 const lineDashes = [undefined, "7 4", "3 3", "10 4 2 4"];
+const monthlyLabelPattern =
+  /^(\d{4}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)$/;
 const months = [
   "Jan",
   "Feb",
@@ -63,6 +65,18 @@ const months = [
   "Nov",
   "Dec",
 ];
+
+function parseMonthlyLabel(label: string) {
+  const match = monthlyLabelPattern.exec(label);
+
+  if (!match) {
+    throw new Error(
+      `Invalid monthly spend label "${label}". Expected the format "YYYY Mon".`,
+    );
+  }
+
+  return { year: match[1], month: match[2] };
+}
 
 function HorizontalBarFigure({
   caption,
@@ -158,10 +172,14 @@ function HorizontalBarFigure({
 }
 
 function createMonthlySeries(items: RetailChartItem[]) {
-  const years = Array.from(
-    new Set(items.map((item) => item.label.split(" ")[0])),
+  const parsedItems = items.map((item) => ({
+    ...item,
+    ...parseMonthlyLabel(item.label),
+  }));
+  const years = Array.from(new Set(parsedItems.map((item) => item.year)));
+  const values = new Map(
+    parsedItems.map((item) => [`${item.year} ${item.month}`, item.value]),
   );
-  const values = new Map(items.map((item) => [item.label, item.value]));
   const data = months.map((month) => {
     const point: Record<string, string | number | null> = { month };
 
