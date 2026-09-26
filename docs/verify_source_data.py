@@ -5,7 +5,8 @@ import csv
 import hashlib
 import json
 from collections import Counter, defaultdict
-from decimal import Decimal
+from datetime import datetime
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
 
@@ -47,6 +48,36 @@ def verify_group(group, actual_items):
     require(actual.keys() == expected.keys(), f"Label mismatch for {group}")
     require(actual == expected, f"Value mismatch for {group}")
     require(list(actual) == list(expected), f"Order mismatch for {group}")
+
+
+def count_evidence_items(section, group):
+    items = [
+        (item["label"], Decimal(str(item["value"])))
+        for item in EVIDENCE[section][group]
+    ]
+    require(
+        len(items) == len(dict(items)),
+        f"Duplicate labels in {section} {group} evidence",
+    )
+    return items
+
+
+def verify_count_group(section, group, actual_items):
+    expected_items = count_evidence_items(section, group)
+    actual_items = [
+        (label, Decimal(value)) for label, value in actual_items
+    ]
+    actual = dict(actual_items)
+    expected = dict(expected_items)
+    require(
+        actual.keys() == expected.keys(),
+        f"Label mismatch for {section} {group}",
+    )
+    require(actual == expected, f"Value mismatch for {section} {group}")
+    require(
+        list(actual) == list(expected),
+        f"Order mismatch for {section} {group}",
+    )
 
 
 def verify_retail():
@@ -139,20 +170,110 @@ def verify_employee():
         len(rows) == EVIDENCE["employee"]["rowCount"],
         "Employee row count mismatch",
     )
-    actual = Counter(row["Department"] for row in rows)
-    expected = {
-        item["label"]: Decimal(str(item["value"]))
-        for item in EVIDENCE["employee"]["data"]
-    }
-    require(all(actual), "Employee data contains a blank department")
-    require(actual.keys() == expected.keys(), "Employee department labels mismatch")
-    require(actual == expected, "Employee department totals mismatch")
-    require(sum(actual.values()) == len(rows), "Employee totals do not cover all rows")
+    monthly_hiring = Counter()
+    age_distribution = Counter()
+
+    for row_number, row in enumerate(rows, start=2):
+        require(row["Join_Date"], f"Employee row {row_number} has no join date")
+        try:
+            join_date = datetime.strptime(row["Join_Date"], "%Y-%m-%d")
+        except ValueError:
+            require(
+                False,
+                f"Employee row {row_number} has an invalid join date",
+            )
+        monthly_hiring[(join_date.year, join_date.month)] += 1
+
+        require(row["Age"], f"Employee row {row_number} has no age")
+        try:
+            age_label = format(Decimal(row["Age"]).normalize(), "f")
+        except (InvalidOperation, ValueError):
+            require(False, f"Employee row {row_number} has an invalid age")
+        age_distribution[age_label] += 1
+
+    verify_count_group(
+        "employee",
+        "monthlyHiring",
+        [
+            (f"{year} {calendar.month_abbr[month]}", count)
+            for (year, month), count in sorted(monthly_hiring.items())
+        ],
+    )
+
+    age_order = ("25", "30", "35", "40")
+    require(
+        age_distribution.keys() == set(age_order),
+        "Employee age labels mismatch",
+    )
+    verify_count_group(
+        "employee",
+        "ageDistribution",
+        [(age, age_distribution[age]) for age in age_order],
+    )
+
+    require(
+        sum(monthly_hiring.values()) == len(rows),
+        "Employee monthly hiring totals do not cover all rows",
+    )
+    require(
+        sum(age_distribution.values()) == len(rows),
+        "Employee age totals do not cover all rows",
+    )
     print(
         "Employee aggregates verified; "
         f"SHA256 {hashlib.sha256(path.read_bytes()).hexdigest()}"
     )
 
 
+def verify_netflix():
+    path, rows = load_rows("netflix.csv")
+    require(
+        len(rows) == EVIDENCE["netflix"]["rowCount"],
+        "Netflix row count mismatch",
+    )
+    by_type = Counter(row["type"] for row in rows)
+    type_order = ("Movie", "TV Show")
+    require(by_type.keys() == set(type_order), "Netflix type labels mismatch")
+    verify_count_group(
+        "netflix",
+        "byType",
+        [(item_type, by_type[item_type]) for item_type in type_order],
+    )
+    require(
+        sum(by_type.values()) == len(rows),
+        "Netflix type totals do not cover all rows",
+    )
+    print(
+        "Netflix aggregates verified; "
+        f"SHA256 {hashlib.sha256(path.read_bytes()).hexdigest()}"
+    )
+
+
+def verify_crime():
+    path, rows = load_rows("crime.csv")
+    require(
+        len(rows) == EVIDENCE["crime"]["rowCount"],
+        "Crime row count mismatch",
+    )
+    severity = Counter(row["severity"] for row in rows)
+    severity_order = ("Low", "Medium", "High", "Critical", "Unknown")
+    require(severity.keys() == set(severity_order), "Crime severity labels mismatch")
+    verify_count_group(
+        "crime",
+        "severity",
+        [(label, severity[label]) for label in severity_order],
+    )
+    require(
+        sum(severity.values()) == len(rows),
+        "Crime severity totals do not cover all rows",
+    )
+    print(
+        "Crime aggregates verified; "
+        f"SHA256 {hashlib.sha256(path.read_bytes()).hexdigest()}"
+    )
+
+
 verify_retail()
 verify_employee()
+verify_netflix()
+verify_crime()
