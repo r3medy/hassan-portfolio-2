@@ -1,6 +1,6 @@
 # Final verification
 
-Completed on 14 September 2026 by the implementation, QA, and parent agents.
+Completed on 14 September 2026 by the implementation, QA, and parent agents. Updated on 26 September 2026 after the notebook and chart-evidence review.
 
 ## Build and routes
 
@@ -28,10 +28,16 @@ Reduced-motion behavior, clipboard failure handling, and mailto encoding were ve
 
 ## Data and content
 
-`docs/verify_source_data.py` reproduces the retail and employee chart aggregates. Raw CSVs stay outside public assets. Project text preserves cleaning-only and work-in-progress distinctions. Unverified notebook methods and libraries remain explicitly pending.
+`docs/verify_source_data.py` reproduces the Retail, Employee, Netflix, and Crime chart aggregates from their matching cleaned CSVs. Raw CSVs stay outside public assets.
+
+The reviewed Employee notebook supports its Python, Pandas, NumPy, and Plotly Express description. Its monthly hiring plot is present. Its author flags the age histogram as wrong, so the website uses verified discrete age counts.
+
+The reviewed Netflix and Crime notebooks use Pandas and NumPy with no plotting calls. Their title-type and severity summaries support the selected website count views. Both projects remain cleaning-only. Other unknown project details remain qualified instead of inferred.
+
+Smart Cities remains Completed and includes selected figures from its notebook. Its descriptive views do not claim causal effects.
 
 ## Preview
 
 The production preview runs at http://127.0.0.1:3001. The development server runs at http://127.0.0.1:3000. Both bind to the local computer. Preview logs are ignored under `.preview/`.
 
-The QA agent found no release-blocking defect. The site retains the approved portrait, resume, Smart Cities, Power BI, and detailed-outcome placeholders.
+The QA agent found no release-blocking defect. The site retains the approved portrait, resume, Power BI, and detailed-outcome placeholders. Smart Cities includes its selected notebook figures.

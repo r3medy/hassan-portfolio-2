@@ -85,7 +85,7 @@ export const projects: Project[] = [
       "Explore the cleaned dataset and create visuals for the analysis.",
     ],
     output:
-      "The shared cleaned CSV includes department, region, employment status, join date, and work arrangement fields.",
+      "The shared cleaned CSV includes age, department, region, employment status, join date, and work arrangement fields.",
     toolsNote:
       "The notebook uses Python, Pandas, NumPy, and Plotly Express for data preparation, exploration, and visualisation.",
     outcome:

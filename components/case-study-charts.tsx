@@ -108,12 +108,7 @@ function HorizontalBarFigure({
       <p className="sr-only" id={`${id}-description`}>
         {formatTextAlternative(title, data)}
       </p>
-      <div
-        className="case-study-chart-scroll"
-        role="region"
-        aria-label={`${title} chart. Scroll horizontally on narrow screens.`}
-        tabIndex={0}
-      >
+      <div className="case-study-chart-scroll">
         <div
           className={`case-study-chart-plot case-study-chart-plot-${size}`}
         >
