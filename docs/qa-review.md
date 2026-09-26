@@ -20,7 +20,7 @@ Use this checklist after the implementation is complete. The PRD is the content 
 - [ ] Each project card links to one readable, static case-study route. The six routes are unique and shareable.
 - [ ] Every case study explains source, goal, process, tools, and scoped work without fabricated findings, impact, or tool use.
 - [ ] Retail, Employee, Netflix, and Crime identify Kaggle as the source. No page exposes datasets or notebook downloads.
-- [ ] Smart Cities is marked Work in progress and does not claim finished visuals or findings.
+- [ ] Smart Cities is marked Completed and includes selected descriptive notebook figures without causal claims.
 - [ ] Netflix Titles and Crime Incidents state cleaning-only scope. They do not imply completed analysis.
 - [ ] Retail and Employee charts match `docs/chart-evidence.json`; Retail shows no currency and Employee labels counts as records.
 - [ ] Soccer Match Scraper accurately describes match dates and results, including unstarted matches, and its live link targets the approved URL.
@@ -67,4 +67,4 @@ Use this checklist after the implementation is complete. The PRD is the content 
 
 - The site has no automated interaction test suite. Repeat the manual browser checks above after contact, navigation, or route changes.
 - Scroll entrance effects use CSS view timelines when the browser supports them. Other browsers show the same content without the effect.
-- The portrait, completed Smart Cities visuals, Power BI sample, and detailed project outcomes remain approved placeholders or work in progress. The résumé PDF is supplied.
+- Smart Cities is Completed and includes selected descriptive notebook figures. The portrait and detailed project outcomes remain approved placeholders or work in progress. The Power BI sample remains pending. The résumé PDF is supplied.

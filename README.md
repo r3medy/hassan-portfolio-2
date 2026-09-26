@@ -38,7 +38,7 @@ npm run start
 
 The contact form opens an email draft addressed to Hassan. The visitor must send the draft from their email application. No email service, API key, database, or environment variable is required. A copy-email action provides a fallback.
 
-The portrait remains a clear placeholder. Smart Cities visuals and findings remain in progress. The Power BI sample is pending. Netflix and Crime Incidents present cleaning work only. The résumé PDF is available from the About section.
+The portrait remains a clear placeholder. The Smart Cities case study is Completed and includes selected descriptive notebook figures. The Power BI sample is pending. Netflix and Crime Incidents present cleaning work only. The résumé PDF is available from the About section.
 
 The Services section links to the current Python data analysis listing on Khamsat. The Contact section links to Hassan's WhatsApp, LinkedIn, Mostaql, Khamsat, and Nafezly profiles.
 
