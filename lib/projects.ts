@@ -87,9 +87,9 @@ export const projects: Project[] = [
     output:
       "The shared cleaned CSV includes department, region, employment status, join date, and work arrangement fields.",
     toolsNote:
-      "The related notebook has not been reviewed, so project-specific libraries are not listed yet.",
+      "The notebook uses Python, Pandas, NumPy, and Plotly Express for data preparation, exploration, and visualisation.",
     outcome:
-      "The cleaned records support comparing record counts by department. The chart below summarizes the shared dataset; it does not count verified unique employees.",
+      "The cleaned records support comparing monthly record counts by join date and record counts by age. The charts summarize 1,020 shared rows; they do not count verified unique employees.",
     visualNote:
       "Abstract visual inspired by a table becoming ordered. It does not depict employee metrics.",
   },
@@ -108,9 +108,9 @@ export const projects: Project[] = [
     output:
       "The shared cleaned CSV has separate duration and duration-unit fields, added-date fields, and explicit Unknown values.",
     toolsNote:
-      "The related notebook has not been reviewed, so project-specific libraries are not listed yet.",
+      "The notebook uses Python, Pandas, and NumPy to clean and prepare the title records. It does not include plotting code.",
     outcome:
-      "A cleaned CSV is available. A full analysis and findings are not presented for this project.",
+      "A cleaned CSV is available. The chart below reports record counts by Movie and TV Show as a limited summary. A full analysis and findings are not presented for this project.",
     visualNote:
       "Abstract sequence of catalogue tiles. It does not depict title counts.",
   },
@@ -130,9 +130,9 @@ export const projects: Project[] = [
     output:
       "The shared cleaned CSV includes incident date, location, case status, resolution, arrest count, and property loss fields. Personal details are not shown here.",
     toolsNote:
-      "The related notebook has not been reviewed, so project-specific libraries are not listed yet.",
+      "The notebook uses Python, Pandas, and NumPy to clean and prepare the incident records. It does not include plotting code.",
     outcome:
-      "A cleaned CSV is available. A full analysis and findings are not presented for this project.",
+      "A cleaned CSV is available. The chart below reports record counts by severity, including Unknown, as a limited summary. A full analysis and findings are not presented for this project.",
     visualNote:
       "Abstract location grid. It does not depict incident locations or counts.",
   },

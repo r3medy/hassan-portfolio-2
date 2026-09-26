@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import chartEvidence from "@/docs/chart-evidence.json";
-import { DatasetChart } from "@/components/dataset-chart";
+import { CaseStudyCharts } from "@/components/case-study-charts";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "@/components/icons";
 import { NotebookFigures } from "@/components/notebook-figures";
 import { ProjectArtwork } from "@/components/project-artwork";
@@ -39,6 +39,9 @@ export default async function ProjectPage({ params }: Props) {
     slug === "retail-store-sales" ? chartEvidence.retail : null;
   const employeeChart =
     slug === "messy-employee-dataset" ? chartEvidence.employee : null;
+  const netflixChart =
+    slug === "netflix-titles" ? chartEvidence.netflix : null;
+  const crimeChart = slug === "crime-incidents" ? chartEvidence.crime : null;
 
   return (
     <main id="main" className="case-page">
@@ -127,17 +130,18 @@ export default async function ProjectPage({ params }: Props) {
                 rowCount={retailChart.rowCount}
               />
             ) : null}
-            {employeeChart ? (
-              <DatasetChart
-                title={employeeChart.title}
-                measure={employeeChart.measure}
-                items={employeeChart.data}
-                valueLabel="Records"
-                rowCount={employeeChart.rowCount}
+            {employeeChart || netflixChart || crimeChart ? (
+              <CaseStudyCharts
+                employee={employeeChart}
+                netflix={netflixChart}
+                crime={crimeChart}
               />
             ) : null}
             {slug === "smart-cities" ? <NotebookFigures /> : null}
-            {!retailChart && !employeeChart ? (
+            {!retailChart &&
+            !employeeChart &&
+            !netflixChart &&
+            !crimeChart ? (
               <div className="case-visual-note">
                 <span className="eyebrow">Visual note</span>
                 <p>{project.visualNote}</p>

@@ -1309,6 +1309,7 @@ p {
   margin: 0;
 }
 .case-story {
+  min-width: 0;
   max-width: 820px;
 }
 .case-story section + section {
@@ -1926,18 +1927,21 @@ p {
 
 /* Case study charts and notebook figures */
 .retail-charts,
+.case-study-charts,
 .notebook-figures {
   display: grid;
   gap: 18px;
   margin-top: 50px;
 }
-.retail-charts {
+.retail-charts,
+.case-study-charts {
   grid-template-columns: minmax(0, 1fr);
 }
 .notebook-figures {
   grid-template-columns: minmax(0, 1fr);
 }
 .retail-chart,
+.case-study-chart,
 .notebook-figure {
   min-width: 0;
   margin: 0;
@@ -1950,21 +1954,43 @@ p {
   grid-column: 1 / -1;
 }
 .retail-chart-heading,
+.case-study-chart-heading,
 .notebook-figure-heading {
   margin-bottom: 22px;
 }
 .retail-chart-heading h3,
+.case-study-chart-heading h3,
 .notebook-figure-heading h3 {
   margin: 9px 0 0;
   font-size: clamp(22px, 2.4vw, 30px);
 }
-.retail-chart-scroll {
+.case-study-chart-heading {
+  display: flex;
+  gap: 20px;
+  align-items: end;
+  justify-content: space-between;
+}
+.case-study-chart-unit {
+  flex: none;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: right;
+}
+.retail-chart-scroll,
+.case-study-chart-scroll {
   max-width: 100%;
   overflow-x: auto;
   scrollbar-color: rgba(154, 231, 195, 0.48) rgba(154, 231, 195, 0.06);
   scrollbar-width: thin;
 }
-.retail-chart-scroll:focus-visible {
+.case-study-chart-scroll {
+  width: 100%;
+  overscroll-behavior-inline: contain;
+}
+.retail-chart-scroll:focus-visible,
+.case-study-chart-scroll:focus-visible {
   outline-offset: -2px;
 }
 .retail-chart-plot {
@@ -1980,7 +2006,22 @@ p {
   min-width: 720px;
   height: 410px;
 }
+.case-study-chart-plot {
+  width: 100%;
+  min-width: 100%;
+}
+.case-study-chart-plot-compact {
+  height: 240px;
+}
+.case-study-chart-plot-standard {
+  height: 320px;
+}
+.case-study-chart-plot-line {
+  min-width: 900px;
+  height: 410px;
+}
 .retail-chart figcaption,
+.case-study-chart figcaption,
 .notebook-figure figcaption {
   padding-top: 15px;
   margin-top: 18px;
@@ -2002,10 +2043,12 @@ p {
 
 @media (max-width: 850px) {
   .retail-charts,
+  .case-study-charts,
   .notebook-figures {
     grid-template-columns: 1fr;
   }
   .retail-chart,
+  .case-study-chart,
   .notebook-figure {
     grid-column: 1;
   }
@@ -2013,20 +2056,32 @@ p {
 
 @media (max-width: 650px) {
   .retail-charts,
+  .case-study-charts,
   .notebook-figures {
     gap: 14px;
     margin-top: 35px;
   }
   .retail-chart,
+  .case-study-chart,
   .notebook-figure {
     padding: 20px 15px;
   }
   .retail-chart-heading,
+  .case-study-chart-heading,
   .notebook-figure-heading {
     margin-bottom: 16px;
   }
   .retail-chart-heading h3,
+  .case-study-chart-heading h3,
   .notebook-figure-heading h3 {
     font-size: 23px;
+  }
+  .case-study-chart-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .case-study-chart-unit {
+    text-align: left;
   }
 }
